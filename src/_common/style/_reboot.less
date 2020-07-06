@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@import "./_variable";
+
+// 使用盒子模型的滚动条
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  // 打破10px字体大小限制
+  -webkit-text-size-adjust:none;
+}
+
+body {
+  font: status-bar;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.42858;
+}
+
+body,dd,dl,form,h1,h2,h3,h4,h5,h6,ol,p,ul {
+  margin: 0
+}
+
+ol,ul {
+  padding: 0
+}
+
+.fix,select {
+  *zoom:1
+}
+
+:focus {
+  outline: 0
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-size: 100%
+}
+
+ol,ul {
+  list-style-type: none
+}
+
+img {
+  border: none;
+  vertical-align: bottom
+}
+
+button,dialog,input,select,textarea {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit
+}
+
+select {
+  opacity: 0;
+  filter: alpha(opacity=0)
+}
+
+a {
+  text-decoration: none;
+}
+
+
+sup {
+  vertical-align: text-top
+}
+
+sub {
+  vertical-align: text-bottom
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed
+}
+
+input::-ms-clear {
+  display: none
+}

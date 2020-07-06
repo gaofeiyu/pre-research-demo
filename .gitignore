@@ -1,0 +1,12 @@
+.DS_Store
+bower_components
+node_modules
+npm-debug.log*
+.less-cache
+*.swp
+.sw*
+.idea/*
+*.log
+.tmp
+*.bak
+.vscode
