@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>跨页面通信示例</title>
+  
+  
+
+  <link inline-mode rel="stylesheet" href="pre-research-demo/cross-tab-communication/pc/index.css">
+</head>
+<body>
+    <h1 id="js-header"></h1>
+    <h2>This page shows the ways to share or sync messages between tabs which have the same origin.</h2>
+    <script>
+        let title = '';
+        if (/new/.test(document.location.search)) {
+            let num = parseInt(window.localStorage.getItem('count'), 10) + 1;
+            title = 'No.' + num + ' - A New Tab (Cross Tabs Communication)';
+            window.localStorage.setItem('count', num);
+            document.getElementById('js-header').setAttribute('data-tab', num);
+            document.title = title;
+        }
+        else {
+            title = 'Cross Tabs Communication';
+            window.localStorage.setItem('count', 1);
+            document.getElementById('js-header').setAttribute('data-tab', 1);
+        }
+        document.getElementById('js-header').textContent = title;
+    </script>
+    <main>
+        <section id="broadcast-channel">
+            <h2>Broadcast Channel</h2>
+            <h3>&nbsp;</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section id="service-worker">
+            <h2>Service Worker</h2>
+            <h3>&nbsp;</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section id="local-storage">
+            <h2>Local Storage </h2>
+            <h3>localStorage</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section id="shared-worker">
+            <h2>Shared Worker</h2>
+            <h3>&nbsp;</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section class="disabled" id="storage2">
+            <h2>Other Storages</h2>
+            <h3>Indexed DB / cookie</h3>
+            <input placeholder="Input Message" disabled />
+            <button type="button" disabled>Send Message</button>
+            <p></p>
+        </section>
+        <section id="post-message">
+            <h2>open & opener</h2>
+            <h3>window.open / window.opener (Cross-document Messaging)</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section class="disabled" id="websocket">
+            <h2>Server Push</h2>
+            <h3>WebSocket / SSE / Long Polling</h3>
+            <input placeholder="Input Message" disabled />
+            <button type="button" disabled>No Example</button>
+            <p></p>
+        </section>
+        <a class="link" id="js-link" href="javascript:void(0);" target="_blank">Open a new tab (same origin) >></a>
+    </main>
+    <script inline-mode charset="utf-8" src="pre-research-demo/cross-tab-communication/pc/index.js"></script>
+</body>
+</html>

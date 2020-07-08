@@ -7,26 +7,6 @@ const openurl = require('openurl');
 const inlineSource = require('gulp-inline-source');
 const replace = require('gulp-replace');
 const chalk = require('chalk');
-const rc = require('../util/getRC')();
-
-// { version: '1.1.4',
-//   framework: 'vue',
-//   platform: 'mix',
-//   inlineImgSizeLimit: 10240,
-//   ars:
-//    { cdn: { productId: '340', moduleId: '412', mapId: [Object] },
-//      view: { productId: '341', moduleId: '455', mapId: [Object] } },
-//   preCommon:
-//    [ './src/_common/object.assign.js',
-//      './src/_common/utils/emonitor.lib.js' ],
-//   postCommon: [],
-//   onlineCdnDomain: [Function: onlineCdnDomain],
-//   currentEnvCdnDomain: [Function: currentEnvCdnDomain],
-//   cdn:
-//    { local: [Function: local],
-//      oa: [Function: oa],
-//      gray: [Function: gray],
-//      release: [Function: release] } }
 
 const argv = require('../util/argv')();
 const pages = require('../util/pages');
@@ -84,7 +64,7 @@ function buildGenerator(pagePath) {
     selectedPages.forEach(function(pageName) {
         console.log(`${chalk.green(` - ${pageName}${pagePath}`)}`);
     });
-    console.log(`\n`);
+    console.log('\n');
 }
 
 gulp.task('webpack:serve', function(done) {

@@ -5,13 +5,11 @@ var sequence = require('gulp-sequence');
 var connect = require('gulp-connect');
 var del = require('del');
 var path = require('path');
-var fs = require('fs');
 var chalk = require('chalk');
 
 var argv = require('./util/argv')();
 var pages = require('./util/pages');
 var getValidPort = require('./util/getValidPort');
-var getRC = require('./util/getRC');
 var DIST_PATH_FULL = path.join(__dirname, '../build');
 
 // 引入各个工具对应的task
@@ -66,33 +64,6 @@ gulp.task('test', function(done) {
     sequence('lint', 'karma:ci', done);
 });
 
-// 发布tips
-gulp.task('deployTips', function() {
-    var breachName = fs.readFileSync('.git/HEAD', 'utf-8').trim();
-    // 分支校验
-    if (
-        !/ref: refs\/heads\/(oa\/|gray|feature\/|hotfix\/|release)/.test(
-            breachName
-        )
-    ) {
-        console.log(
-            `${chalk.red(
-                '****************************************************'
-            )}`
-        );
-        console.log(
-            `${chalk.red('* ---- error - ')}${chalk.yellow(
-                '您当前的分支不符合要求'
-            )}${chalk.red(' - error ---- *')}`
-        );
-        console.log(
-            `${chalk.red(
-                '****************************************************'
-            )}`
-        );
-    }
-});
-
 // 启动karma服务器监控文件变化，随时执行单元测试
 gulp.task('ttd', function(done) {
     sequence('lint', 'karma:ttd', done);
@@ -111,7 +82,6 @@ gulp.task('build', function(done) {
         'clean',
         'webpack:build',
         'clean-build',
-        'deployTips',
         done
     );
 });
